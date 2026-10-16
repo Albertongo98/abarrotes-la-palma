@@ -87,8 +87,12 @@ h1, h2, h3 { font-family: 'Segoe UI Variable Display', 'Aptos', 'Trebuchet MS', 
   border: 1px solid rgba(26,46,26,.09); box-shadow: 0 2px 12px rgba(26,46,26,.07);
   display: flex; flex-direction: column;
 }
-.sf-offer-img { background: linear-gradient(135deg, #fff3d0, #f5e2c0); text-align: center; font-size: 2.6rem; padding: 1rem 0; }
-.sf-offer-img img { width: 100%; height: 120px; object-fit: cover; margin: -1rem 0; }
+.sf-offer-img { background: linear-gradient(135deg, #fff3d0, #f5e2c0); display: grid; place-items: center; min-height: 162px; font-size: 3.2rem; padding: 1rem 0; }
+.sf-offer-img img { width: 100%; height: 130px; object-fit: contain; padding: 0 .75rem; filter: drop-shadow(0 6px 8px rgba(0,0,0,.15)); }
+.sf-provs { margin-top: 2.5rem; padding: 1.5rem; border-radius: 16px; background: var(--crema); text-align: center; }
+.sf-provs .sf-subtitle { margin-top: 0; color: #a3161b; }
+.sf-provs__logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.25rem 2rem; }
+.sf-provs__logos img { height: 64px; width: auto; max-width: 160px; object-fit: contain; }
 .sf-offer-body { padding: .7rem .8rem .9rem; }
 .sf-offer-body h3 { margin: 0 0 .35rem; font-size: .88rem; font-weight: 700; line-height: 1.3; }
 .sf-price-row { display: flex; align-items: baseline; gap: .45rem; flex-wrap: wrap; }
