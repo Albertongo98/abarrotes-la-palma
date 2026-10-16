@@ -155,3 +155,26 @@ h1, h2, h3 { font-family: 'Segoe UI Variable Display', 'Aptos', 'Trebuchet MS', 
 .sf-footer p { margin: .25rem 0; }
 .sf-footer a { color: var(--oro); }
 .sf-editar-link { color: rgba(255,255,255,.35) !important; font-size: .75rem; }
+
+/* ── Fiesta de bienvenida (globos, confeti y serpentinas) ── */
+.fiesta { position: fixed; inset: 0; pointer-events: none; z-index: 9000; overflow: hidden; }
+.globo {
+  position: absolute; bottom: -140px; width: 54px; height: 66px; border-radius: 50% 50% 48% 48%;
+  background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.75) 0 8%, transparent 22%), var(--c);
+  box-shadow: inset -6px -8px 0 rgba(0,0,0,.12); transform: scale(var(--s));
+  animation: subir linear forwards;
+}
+.globo::after { content: ''; position: absolute; left: 50%; top: 100%; width: 1px; height: 70px; background: rgba(60,60,60,.45); }
+.globo::before { content: ''; position: absolute; left: calc(50% - 5px); top: calc(100% - 2px); border: 5px solid transparent; border-bottom-color: var(--c); transform: rotate(180deg); }
+.confeti { position: absolute; top: -20px; width: 9px; height: 14px; border-radius: 2px; animation: caer linear forwards; }
+.serpentina { position: absolute; top: -90px; width: 22px; height: 88px; animation: caer linear forwards; }
+@keyframes subir {
+  0% { transform: translate(0, 0) scale(var(--s)); opacity: 1; }
+  50% { transform: translate(18px, -60vh) scale(var(--s)); }
+  100% { transform: translate(-12px, -125vh) scale(var(--s)); opacity: .9; }
+}
+@keyframes caer {
+  0% { transform: translate(0, 0) rotate(0); opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translate(var(--x), 110vh) rotate(720deg); opacity: 0; }
+}

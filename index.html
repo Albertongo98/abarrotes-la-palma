@@ -210,6 +210,24 @@
     var s = document.createElement('script'); s.src = 'editor.js?v=' + Date.now(); document.body.appendChild(s);
   }
   addEventListener('hashchange', abrirEditor); abrirEditor();
+
+  // Fiesta de bienvenida: globos que suben y confeti/serpentinas que caen (una vez por visita).
+  (function fiesta() {
+    if (location.hash === '#editar' || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    try { if (sessionStorage.getItem('fiesta')) return; sessionStorage.setItem('fiesta', '1'); } catch (e) {}
+    var colores = ['#e8b923', '#f5d36b', '#2a5c35', '#c0262d', '#ffffff', '#e86a92', '#3a8dde'];
+    var capa = document.createElement('div');
+    capa.className = 'fiesta'; capa.setAttribute('aria-hidden', 'true');
+    var r = function (a, b) { return a + Math.random() * (b - a); };
+    var c = function () { return colores[Math.floor(Math.random() * colores.length)]; };
+    var html = '';
+    for (var i = 0; i < 14; i++) html += '<span class="globo" style="left:' + r(0, 95) + '%;--c:' + c() + ';animation-delay:' + r(0, 1.2) + 's;animation-duration:' + r(3.5, 5.5) + 's;--s:' + r(.7, 1.2) + '"></span>';
+    for (i = 0; i < 70; i++) html += '<span class="confeti" style="left:' + r(0, 100) + '%;background:' + c() + ';animation-delay:' + r(0, 1.5) + 's;animation-duration:' + r(2.5, 4.5) + 's;--x:' + r(-80, 80) + 'px"></span>';
+    for (i = 0; i < 12; i++) html += '<svg class="serpentina" viewBox="0 0 20 80" style="left:' + r(0, 95) + '%;animation-delay:' + r(0, 1.5) + 's;animation-duration:' + r(3, 5) + 's;--x:' + r(-60, 60) + 'px"><path d="M10 0 C20 10 0 20 10 30 S0 50 10 60 S20 70 10 80" stroke="' + c() + '" stroke-width="3" fill="none" stroke-linecap="round"/></svg>';
+    capa.innerHTML = html;
+    document.body.appendChild(capa);
+    setTimeout(function () { capa.remove(); }, 7500);
+  })();
 </script>
 </body>
 </html>
