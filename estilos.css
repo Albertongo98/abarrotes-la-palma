@@ -1,0 +1,153 @@
+/* Estilos portados de replatform-new-repo (StoreFrontPage). Colores editables desde el editor: viven en el style="" de #sitio */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI Variable Text', 'Aptos', 'Trebuchet MS', system-ui, sans-serif;
+  color: var(--tinta, #1a2e1a);
+  background: #fff;
+}
+img, video { max-width: 100%; display: block; }
+h1, h2, h3 { font-family: 'Segoe UI Variable Display', 'Aptos', 'Trebuchet MS', system-ui, sans-serif; }
+
+[data-oculto] { display: none !important; }
+#sitio { --suave: #c8e6c9; --gris: #4a6350; --tarjeta: #faf7f2; }
+
+/* ── Header ── */
+.sf-header {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0 1.25rem; min-height: 60px;
+  background: #fff; border-bottom: 1px solid rgba(26,46,26,.1);
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 1px 8px rgba(26,46,26,.06);
+}
+.sf-header__brand { display: flex; align-items: center; gap: .55rem; flex-shrink: 0; }
+.sf-logo-img { height: 40px; width: 40px; object-fit: contain; border-radius: 6px; }
+.sf-brand-name { font-size: 1.05rem; font-weight: 800; color: var(--verde-oscuro); }
+.sf-header__nav { display: none; gap: .15rem; flex: 1; justify-content: center; }
+.sf-nav-link {
+  padding: .35rem .9rem; border-radius: 999px; font-size: .87rem; font-weight: 500;
+  color: var(--gris); text-decoration: none;
+}
+.sf-nav-link:hover { background: var(--suave); color: var(--verde-oscuro); }
+.sf-fb-btn {
+  margin-left: auto; padding: .45rem 1.1rem; border-radius: 999px;
+  border: 1.5px solid var(--verde); color: var(--verde);
+  font-size: .85rem; font-weight: 600; text-decoration: none; white-space: nowrap;
+}
+.sf-fb-btn:hover { background: var(--verde); color: #fff; }
+@media (min-width: 768px) { .sf-header__nav { display: flex; } }
+
+/* ── Hero ── */
+.sf-hero {
+  min-height: 60vh;
+  background: linear-gradient(rgba(10,10,6,.72), rgba(10,10,6,.85)), url('img/frente.jpg') center / cover no-repeat;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; color: #fff; padding: 4rem 1.5rem;
+}
+.sf-hero__inner { max-width: 620px; }
+.sf-hero__logo { width: 170px; height: 170px; object-fit: cover; border-radius: 50%; margin: 0 auto 1.25rem; box-shadow: 0 6px 28px rgba(0,0,0,.5); }
+.sf-hero__eyebrow { margin: 0 0 .8rem; font-size: .76rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--oro); }
+.sf-hero__title { margin: 0 0 .5rem; font-size: clamp(2.2rem, 7vw, 3.6rem); font-weight: 900; line-height: 1.05; }
+.sf-hero__sub { margin: 0 0 2rem; font-size: 1.05rem; color: rgba(255,255,255,.8); letter-spacing: .05em; }
+.sf-cta {
+  display: inline-block; padding: .85rem 2rem; border-radius: 999px;
+  background: var(--oro); color: #1a1406; font-weight: 700; text-decoration: none;
+  box-shadow: 0 4px 24px rgba(0,0,0,.25);
+}
+.sf-cta:hover { transform: translateY(-2px); }
+
+/* ── Bandas ── */
+.sf-band { padding: 3rem 1.25rem; }
+.sf-band--white { background: #fff; }
+.sf-band--cream { background: var(--crema); }
+.sf-band--green { background: var(--verde-oscuro); color: #fff; }
+.sf-band--dark { background: #15110a; color: #fff; }
+.sf-band__inner { max-width: 1200px; margin: 0 auto; }
+.sf-band__title { font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 800; margin: 0 0 1.25rem; }
+.sf-band__lead { margin: -.5rem 0 1.5rem; color: var(--gris); }
+.sf-band--green .sf-band__lead, .sf-band--dark .sf-band__lead { color: rgba(255,255,255,.75); }
+.sf-subtitle { font-size: 1.05rem; margin: 2rem 0 .9rem; color: var(--verde-oscuro); }
+@media (min-width: 768px) { .sf-band { padding: 4rem 2rem; } }
+
+/* ── Evento aniversario ── */
+.sf-evento { display: grid; gap: 1.5rem; align-items: center; }
+.sf-evento img { border-radius: 16px; box-shadow: 0 8px 30px rgba(0,0,0,.4); margin: 0 auto; }
+.sf-evento h2 { color: var(--oro); font-size: clamp(1.6rem, 4vw, 2.4rem); margin: 0 0 .5rem; }
+.sf-evento__fecha { font-size: 1.25rem; font-weight: 700; margin: 0 0 1rem; }
+.sf-evento ul { padding-left: 1.2rem; line-height: 1.9; margin: 0 0 1.25rem; }
+@media (min-width: 768px) { .sf-evento { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+
+/* ── Ofertas ── */
+.sf-offers-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .9rem; }
+@media (min-width: 640px) { .sf-offers-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 960px) { .sf-offers-grid { grid-template-columns: repeat(5, 1fr); } }
+.sf-offer-card {
+  border-radius: 16px; overflow: hidden; background: var(--tarjeta);
+  border: 1px solid rgba(26,46,26,.09); box-shadow: 0 2px 12px rgba(26,46,26,.07);
+  display: flex; flex-direction: column;
+}
+.sf-offer-img { background: linear-gradient(135deg, #fff3d0, #f5e2c0); text-align: center; font-size: 2.6rem; padding: 1rem 0; }
+.sf-offer-img img { width: 100%; height: 120px; object-fit: cover; margin: -1rem 0; }
+.sf-offer-body { padding: .7rem .8rem .9rem; }
+.sf-offer-body h3 { margin: 0 0 .35rem; font-size: .88rem; font-weight: 700; line-height: 1.3; }
+.sf-price-row { display: flex; align-items: baseline; gap: .45rem; flex-wrap: wrap; }
+.sf-price-before { font-size: .78rem; color: var(--gris); text-decoration: line-through; }
+.sf-price { font-size: 1.2rem; font-weight: 800; color: var(--verde); }
+.sf-unit { font-size: .72rem; color: var(--gris); }
+
+/* ── Carnicería ── */
+.sf-carne-layout { display: flex; flex-direction: column; gap: 1.5rem; }
+.sf-carne-photos { display: grid; grid-template-columns: 3fr 2fr; gap: .75rem; border-radius: 18px; overflow: hidden; }
+.sf-carne-photos img { width: 100%; height: 220px; object-fit: cover; }
+.sf-carne-text p { color: var(--gris); line-height: 1.7; }
+.sf-carne-cuts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: .3rem 1rem; }
+.sf-carne-cuts li { font-size: .9rem; color: var(--gris); }
+.sf-carne-cuts li::before { content: '✓ '; color: var(--verde); font-weight: 800; }
+@media (min-width: 768px) {
+  .sf-carne-layout { flex-direction: row-reverse; align-items: center; gap: 3rem; }
+  .sf-carne-photos, .sf-carne-text { flex: 1; }
+  .sf-carne-photos img { height: 300px; }
+}
+
+/* ── Departamentos ── */
+.sf-deps { display: grid; grid-template-columns: repeat(2, 1fr); gap: .9rem; }
+@media (min-width: 768px) { .sf-deps { grid-template-columns: repeat(4, 1fr); } }
+.sf-dep { background: #fff; border-radius: 14px; padding: 1.25rem; box-shadow: 0 1px 8px rgba(26,46,26,.06); }
+.sf-dep span { font-size: 2rem; }
+.sf-dep h3 { margin: .4rem 0 .25rem; font-size: 1rem; }
+.sf-dep p { margin: 0; font-size: .85rem; color: var(--gris); }
+
+/* ── Historia ── */
+.sf-about-layout { display: grid; gap: 2rem; }
+.sf-about-text { color: rgba(255,255,255,.82); line-height: 1.8; }
+.sf-about-photo { border-radius: 14px; margin-top: 1rem; }
+.sf-timeline { border-left: 2px solid rgba(216,243,220,.35); padding-left: 1rem; }
+.sf-timeline-item { display: flex; gap: .75rem; padding: .5rem 0; }
+.sf-timeline-year { font-weight: 800; color: var(--oro); min-width: 48px; }
+.sf-timeline-text { margin: 0; color: rgba(255,255,255,.78); line-height: 1.5; }
+.sf-video { border-radius: 14px; margin-top: 1.25rem; width: 100%; max-height: 520px; background: #000; }
+@media (min-width: 768px) { .sf-about-layout { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+
+/* ── Galería ── */
+.sf-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+.sf-gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; }
+@media (min-width: 768px) { .sf-gallery { grid-template-columns: repeat(4, 1fr); } }
+
+/* ── Contacto ── */
+.sf-contact-grid { display: grid; gap: .75rem; }
+@media (min-width: 768px) { .sf-contact-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; } }
+.sf-contact-item {
+  display: flex; gap: 1rem; padding: 1.1rem 1.2rem; background: #fff;
+  border-radius: 14px; box-shadow: 0 1px 8px rgba(26,46,26,.05);
+}
+.sf-contact-icon { font-size: 1.5rem; }
+.sf-contact-item strong { display: block; margin-bottom: .25rem; }
+.sf-contact-item p { margin: 0; font-size: .88rem; color: var(--gris); line-height: 1.55; }
+.sf-map { width: 100%; height: 340px; border: 0; border-radius: 14px; margin-top: 1rem; }
+
+/* ── Footer ── */
+.sf-footer { background: var(--verde-oscuro); color: rgba(255,255,255,.75); text-align: center; padding: 2rem 1rem; font-size: .85rem; }
+.sf-footer p { margin: .25rem 0; }
+.sf-footer a { color: var(--oro); }
+.sf-editar-link { color: rgba(255,255,255,.35) !important; font-size: .75rem; }
