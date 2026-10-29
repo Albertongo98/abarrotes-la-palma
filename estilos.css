@@ -41,7 +41,7 @@ h1, h2, h3 { font-family: 'Segoe UI Variable Display', 'Aptos', 'Trebuchet MS', 
 /* ── Hero ── */
 .sf-hero {
   min-height: 60vh;
-  background: linear-gradient(rgba(10,10,6,.72), rgba(10,10,6,.85)), url('img/frente.jpg') center / cover no-repeat;
+  background: linear-gradient(rgba(45,12,60,.78), rgba(15,6,0,.9)), url('img/frente.jpg') center / cover no-repeat; /* tinte morado de Halloween */
   display: flex; align-items: center; justify-content: center;
   text-align: center; color: #fff; padding: 4rem 1.5rem;
 }
@@ -156,25 +156,42 @@ h1, h2, h3 { font-family: 'Segoe UI Variable Display', 'Aptos', 'Trebuchet MS', 
 .sf-footer a { color: var(--oro); }
 .sf-editar-link { color: rgba(255,255,255,.35) !important; font-size: .75rem; }
 
-/* ── Fiesta de bienvenida (globos, confeti y serpentinas) ── */
+/* ── Aviso de mantenimiento ── */
+.sf-aviso { background: #fff3cd; color: #5c4400; text-align: center; padding: .6rem 1rem; font-size: .9rem; border-bottom: 1px solid #f0d78c; }
+
+/* ── Halloween ── */
+.sf-halloween { text-align: center; background: linear-gradient(135deg, #1b0a24, #2d0f3a 50%, #15110a); }
+.sf-halloween .sf-band__title { color: var(--oro); font-size: clamp(1.8rem, 5vw, 2.6rem); margin-bottom: .5rem; }
+
+/* ── Combos ── */
+.sf-combos { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 1rem; }
+.sf-combo { background: var(--tarjeta); border: 1px solid rgba(26,46,26,.09); border-radius: 16px; padding: 1.25rem; box-shadow: 0 2px 12px rgba(26,46,26,.07); display: flex; flex-direction: column; }
+.sf-combo__icono { font-size: 2.6rem; }
+.sf-combo h3 { margin: .5rem 0 .3rem; font-size: 1.1rem; }
+.sf-combo p { margin: 0 0 .9rem; color: var(--gris); font-size: .88rem; line-height: 1.5; flex: 1; }
+.sf-combo__precio { font-size: 1.5rem; color: var(--verde); }
+
+/* ── Impresiones / WhatsApp ── */
+.sf-impresiones { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+.sf-impresiones__icono { font-size: 4rem; }
+.sf-impresiones > div:last-child { flex: 1; min-width: 240px; }
+.sf-impresiones p { color: var(--gris); line-height: 1.6; }
+.sf-cta--wa { background: #25d366; color: #fff; }
+.sf-wa-flotante {
+  position: fixed; right: 16px; bottom: 16px; z-index: 500; padding: .8rem 1.1rem; border-radius: 999px;
+  background: #25d366; color: #fff; font-weight: 700; text-decoration: none; box-shadow: 0 6px 20px rgba(0,0,0,.25);
+}
+
+/* ── Animación de Halloween: murciélagos, fantasmas y calabazas ── */
 .fiesta { position: fixed; inset: 0; pointer-events: none; z-index: 9000; overflow: hidden; }
-.globo {
-  position: absolute; bottom: -140px; width: 54px; height: 66px; border-radius: 50% 50% 48% 48%;
-  background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.75) 0 8%, transparent 22%), var(--c);
-  box-shadow: inset -6px -8px 0 rgba(0,0,0,.12); transform: scale(var(--s));
-  animation: subir linear forwards;
+.fiesta span { position: absolute; line-height: 1; }
+.murcielago { top: var(--y); left: -60px; font-size: var(--t); animation: volar linear forwards, aletear .25s ease-in-out infinite alternate; }
+.fantasma { bottom: -80px; left: var(--x); font-size: var(--t); animation: flotar ease-in forwards; }
+.dulce { top: -40px; left: var(--x); font-size: var(--t); animation: caer linear forwards; }
+@keyframes volar { 0% { left: -60px; } 50% { transform: translateY(-40px); } 100% { left: calc(100% + 60px); transform: translateY(20px); } }
+@keyframes aletear { to { scale: 1 .55; } }
+@keyframes flotar {
+  0% { transform: translate(0, 0); opacity: 0; } 15% { opacity: .95; }
+  50% { transform: translate(30px, -55vh); } 100% { transform: translate(-20px, -120vh); opacity: 0; }
 }
-.globo::after { content: ''; position: absolute; left: 50%; top: 100%; width: 1px; height: 70px; background: rgba(60,60,60,.45); }
-.globo::before { content: ''; position: absolute; left: calc(50% - 5px); top: calc(100% - 2px); border: 5px solid transparent; border-bottom-color: var(--c); transform: rotate(180deg); }
-.confeti { position: absolute; top: -20px; width: 9px; height: 14px; border-radius: 2px; animation: caer linear forwards; }
-.serpentina { position: absolute; top: -90px; width: 22px; height: 88px; animation: caer linear forwards; }
-@keyframes subir {
-  0% { transform: translate(0, 0) scale(var(--s)); opacity: 1; }
-  50% { transform: translate(18px, -60vh) scale(var(--s)); }
-  100% { transform: translate(-12px, -125vh) scale(var(--s)); opacity: .9; }
-}
-@keyframes caer {
-  0% { transform: translate(0, 0) rotate(0); opacity: 1; }
-  85% { opacity: 1; }
-  100% { transform: translate(var(--x), 110vh) rotate(720deg); opacity: 0; }
-}
+@keyframes caer { 0% { transform: translate(0, 0) rotate(0); opacity: 1; } 85% { opacity: 1; } 100% { transform: translate(var(--d), 110vh) rotate(540deg); opacity: 0; } }
